@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:名称空间 指定映射对应的接口，全名   resultType 返回值类型-->
+<mapper namespace="com.icss.mapper.GoodsKindMapper">
+
+    <select id="selectAll" resultType="com.icss.pojo.GoodS">
+        select *
+        from goods
+    </select>
+    <select id="conditions" resultType="com.icss.pojo.GoodS">
+        select *
+        from goods
+        <where>
+            <if test="kind !=null and kind !='' ">
+                and kind=#{kind}
+            </if>
+
+        </where>
+    </select>
+    <select id="selectById" resultType="com.icss.pojo.GoodS">
+        select *
+        from goods where goodsid=#{goodsid}
+    </select>
+    <delete id="delete">
+        select *
+        from goods where goodsid=#{goodsid}
+    </delete>
+</mapper>
